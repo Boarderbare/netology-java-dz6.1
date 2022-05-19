@@ -13,13 +13,9 @@ public class StatsService {
     }
 
     // Средняя сумма продаж в месяц
-    public float avgSalesPerMonth(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        float avgSum = (float) sum / sales.length;
-        return avgSum;
+    public long avgSalesPerMonth(long[] sales) {
+        float avgSalesPerMonth = (float) sumTotalSales(sales)/sales.length;
+        return Math.round (avgSalesPerMonth);
     }
 
     //   Номер месяца, в котором был пик продаж (осуществлены продажи на максимальную сумму)*
@@ -46,11 +42,7 @@ public class StatsService {
 
     // Кол-во месяцев, в которых продажи были ниже среднего (см. п.2)
     public int countMonthLowSalesAvg(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        float avgSum = (float) sum / sales.length;
+        long avgSum = avgSalesPerMonth(sales);
         int i = 0;
         for (long sale : sales) {
             if (sale <= avgSum) {
@@ -62,11 +54,7 @@ public class StatsService {
 
     //        Кол-во месяцев, в которых продажи были выше среднего (см. п.2)
     public int countMonthUpSalesAvg(long[] sales) {
-        long sum = 0;
-        for (long sale : sales) {
-            sum += sale;
-        }
-        float avgSum = (float) sum / sales.length;
+        long avgSum = avgSalesPerMonth(sales);
         int i = 0;
         for (long sale : sales) {
             if (sale >= avgSum) {

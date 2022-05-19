@@ -3,10 +3,10 @@ package ru.netology.stats;
 public class Main {
     public static void main(String[] args) {
         StatsService service = new StatsService();
-        long sales[] = {5, 15, 10, 4, 16, 40, 13, 17, 6, 14, 30, 45};
+        long[] sales = {5, 15, 10, 4, 16, 40, 13, 17, 6, 14, 30, 45};
         long sumTotalSales = service.sumTotalSales(sales);
         System.out.println("Сумма всех продаж " + sumTotalSales);
-        float avgMonth=service.avgSalesPerMonth(sales);
+        long avgMonth=service.avgSalesPerMonth(sales);
         System.out.println("Средняя сумма продаж в месяц " +avgMonth);
         int monthHigh= (int) service.monthHighSales(sales);
         System.out.println("Месяц наибольших продаж " + monthHigh);
